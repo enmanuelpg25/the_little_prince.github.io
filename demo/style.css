@@ -1,2 +1,7 @@
-body {padding:0; margin:0; background: #8871aa; font-family:"Comic Sans MS";}
-#MEME project (width:20%;}
+html, body {
+  margin: 0;
+  padding: 0;
+}
+canvas {
+  display: block;
+}
