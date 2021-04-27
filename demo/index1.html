@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.2.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.2.0/addons/p5.sound.min.js"></script>
+    <style>
+    
+
+    html, body {
+  margin: 0;
+  padding: 0;
+}
+canvas{display: block;
+}
+.link{
+ position: absolute;
+    top: 400px;
+  left:140px;
+/*     left: 50%;
+    transform: translateX(-50%); */
+    color: #000;
+    text-decoration: none;
+    font-size: 1.5rem;
+  user-select:none
+} 
+      h4.text2 {
+  position: absolute;
+  bottom: 10px;
+  border: 3px solid #73AD21;
+}  
+    
+hr { margin: 0.1em auto; } 
+hr {border: none} 
+    </style>
+ 
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <script>
+      let night_text = "let it be night";
+    let bgColor ="#fff";
+      let textColor ="#222";
+      let img;
+function preload() {
+  img = loadImage('img/first_planet.png');
+}
+function setup() {
+  createCanvas(400, 400);
+  
+  
+}
+      
+      
+    
+      function draw() {
+background(bgColor); 
+        image(img, 0, 0, 400, 400);
+        text(night_text, 280, 50);
+        fill(textColor);
+}
+      
+      function mousePressed() {
+  if(bgColor == "#fff"){
+    bgColor = "#222";
+    night_text = "Let it be day";
+    textColor = "#fff";
+  }else{
+    bgColor = "#fff";
+    night_text = "Let it be night";
+    textColor = "#222";
+  }
+}
+
+
+
+
+      
+    </script>
+    
+    <a href="index2.html" class="link">Tap here to continue</a>
+  
+   <h4 class="text2">
+    The first planet he visited had a king who liked to give orders. <hr>And according to him, he could order anything to happen. He
+     <hr>could even decide when it was dawn and when it was dusk, just 
+      <hr>by asking. The little prince asked him to see a sunrise, the king
+      <hr>told him to wait 10 minutes, what was which was the time that lasted 
+      <hr>each night and each day on that planet leaving the little <hr>prince puzzled.</h4>
+    
+  </body>
+</html>

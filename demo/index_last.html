@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.2.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.2.0/addons/p5.sound.min.js"></script>
+    <style>
+    
+    html, body {
+  margin: 0;
+  padding: 0;
+}
+canvas{display: block;
+}
+.link{
+ position: absolute;
+    top: 400px;
+  left:140px;
+/*     left: 50%;
+    transform: translateX(-50%); */
+    color: #000;
+    text-decoration: none;
+    font-size: 1.5rem;
+  user-select:none
+}
+    
+      h4.text7 {
+  position: absolute;
+  bottom: 80px;
+  border: 3px solid #73AD21;
+}  
+    
+hr { margin: 0.1em auto; } 
+hr {border: none}
+    </style>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <script>
+"use strict";
+
+class Rectangle {
+    constructor(pos, img) {
+        this.pos = pos;
+        this.img = img;
+        this.width = img.width;
+        this.height = img.height;
+    }
+    draw() {
+        image(this.img, this.pos.x, this.pos.y, 70, 60);
+    }
+    hits(hitpos) {
+        if (hitpos.x > this.pos.x &&
+            hitpos.x < this.pos.x + 70 &&
+            hitpos.y > this.pos.y &&
+            hitpos.y < this.pos.y + 60) {
+            return true;
+        }
+        return false;
+    }
+}
+let rects;
+let dragRec;
+let isDragging;
+let clickOffset;
+let imgCb, img;
+function preload() {
+    imgCb = loadImage("img/book.png");
+  img = loadImage('img/planet_final.png');
+}
+function setup() {
+    rects = [];
+    placeImages();
+    isDragging = false;
+    createCanvas(400, 400);
+    
+}
+function placeImages() {
+    var numImage = 10;
+    for (var i = 0; i < numImage; i++) {
+        let pos = randomPos();
+        rects.push(new Rectangle(pos, imgCb));
+    }
+}
+function randomPos() {
+    return createVector(random(0, 360), random(0, 320));
+}
+function draw() {
+    clear();
+  background(img);
+    rects.forEach(r => r.draw());
+}
+function mousePressed() {
+    let m = createVector(mouseX, mouseY);
+    let index;
+    rects.forEach((r, i) => {
+        if (r.hits(m)) {
+            clickOffset = p5.Vector.sub(r.pos, m);
+            isDragging = true;
+            dragRec = r;
+            index = i;
+        }
+    });
+    if (isDragging) {
+        putOnTop(index);
+    }
+}
+function putOnTop(index) {
+    rects.splice(index, 1);
+    rects.push(dragRec);
+}
+function mouseDragged() {
+    if (isDragging) {
+        let m = createVector(mouseX, mouseY);
+        dragRec.pos.set(m).add(clickOffset);
+    }
+}
+function mouseReleased() {
+    isDragging = false;
+}
+// function windowResized() {
+//     resizeCanvas(windowWidth, windowHeight);
+// }
+
+      
+    </script>
+    
+    
+      <h4 class="text7">
+      
+The last planet was inhabited by a geographer who wrote books and drew maps. <hr>But he never left his office and was only guided by what others told him.<hr> Without even checking if it was true or not.After his <hr>journey the little prince visited the Earth where he met a fox <hr>and several roses. Those roses reminded him of his rose on his planet. <hr>For which the little prince decided to return to his planet
+    </h4>
+  </body>
+</html>

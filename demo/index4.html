@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.2.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.2.0/addons/p5.sound.min.js"></script>
+    <style>
+    
+    html, body {
+  margin: 0;
+  padding: 0;
+}
+canvas{display: block;
+}
+.link{
+ position: absolute;
+    top: 410px;
+  left:140px;
+/*     left: 50%;
+    transform: translateX(-50%); */
+    color: #000;
+    text-decoration: none;
+    font-size: 1.5rem;
+}
+ 
+      h4.text5 {
+  position: absolute;
+  bottom: 70px;
+  border: 3px solid #73AD21;
+}  
+    
+hr { margin: 0.1em auto; } 
+hr {border: none}   
+    </style>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <script>
+      
+      const synth = window.speechSynthesis;
+
+const speak = text => {
+  if (synth.speaking) {
+    console.error('speechSynthesis.speaking');
+    return;
+  }
+  let utterThis = new SpeechSynthesisUtterance(text);
+  utterThis.pitch = 0.1;
+  utterThis.rate = 0.8;
+  synth.speak(utterThis);
+};
+    
+      let img;
+function preload() {
+  img = loadImage('img/fourth_planet.png');
+}
+function setup() {
+  createCanvas(400, 400);
+}
+function draw() {
+  image(img, 0, 0, 400, 400);
+}
+      
+function mousePressed() {
+  speak("don't bother, I'm busy")
+}
+
+
+      
+    </script>
+    
+    <a href="index5.html" class="link">Tap here to continue</a>
+    
+    <h4 class="text5">
+      The fourth planet inhabited a businessman who did not pay attention <hr>when the little prince arrived, because he was always busy.
+    </h4>
+    
+  </body>
+</html>

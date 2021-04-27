@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.2.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.2.0/addons/p5.sound.min.js"></script>
+    <style>
+    
+    html, body {
+  margin: 0;
+  padding: 0;
+}
+canvas{display: block;
+}
+.link{
+ position: absolute;
+    top: 400px;
+  left:140px;
+/*     left: 50%;
+    transform: translateX(-50%); */
+    color: #000;
+    text-decoration: none;
+    font-size: 1.5rem;
+  user-select:none
+}
+    
+      h4.text6 {
+  position: absolute;
+  bottom: 60px;
+  border: 3px solid #73AD21;
+}  
+    
+hr { margin: 0.1em auto; } 
+hr {border: none}
+    </style>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <script>
+    
+      let img, img2, counter =1;
+function preload() {
+  img = loadImage('img/fifht_planet.png');
+  img2 = loadImage('img/fifht_planet2.png');
+}
+function setup() {
+  a(img);
+}
+  
+      function mousePressed() {
+  if(counter%2 == 0){
+    a(img);
+  }else{
+    a(img2);
+  }
+        counter++;
+}
+      
+      function a(image_path){
+        createCanvas(400, 400);
+    image(image_path, 0, 0, 400, 400);
+      }
+
+
+      
+    </script>
+    
+    <a href="index_last.html" class="link">Tap here to continue</a>
+    
+      <h4 class="text6">
+        On the fifth planet lived a man whose only job was to turn on and off<hr> a street lamp, depending on whether it was day or night. The problem was <hr>that each day lasted only one minute on his planet, which prevented<hr> the poor man from doing whatever he wanted
+      
+    </h4>
+    
+  </body>
+</html>
